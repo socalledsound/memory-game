@@ -1,4 +1,4 @@
-
+// this method of shuffling an array could come in useful to generate new indexes for the cards on init?
 function shuffleItems(arr){
     return arr.slice().sort((a,b) => (0.5-Math.random()))
 }
