@@ -31,15 +31,18 @@ class Card {
     }
 
     showImage(){
-        image(this.img, this.x + this.w/4, this.y + this.h/3, this.w/2, this.w/2)
+        image(this.img, this.x + this.w/10, this.y + this.h/3, this.w/1.25, this.w/1.25)
     }
 
     renderX(){
+        const paddingLeft = 10
+        const paddingTop = this.h/3
+        const paddingBottom = 20
         stroke('red')
         fill('red')
         strokeWeight(10)
-        line(this.x, this.y, this.x + this.w, this.y + this.h)
-        line(this.x + this.w, this.y, this.x, this.y + this.h)
+        line(this.x + paddingLeft, this.y + paddingTop, this.x + this.w - paddingLeft, this.y + this.h - paddingBottom)
+        line(this.x + this.w - paddingLeft, this.y + paddingTop, this.x + paddingLeft, this.y + this.h - paddingBottom)
     }
 
     render(){
