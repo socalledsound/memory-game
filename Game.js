@@ -55,7 +55,7 @@ class Game {
             this.cards[this.selections[0]].solved = true
             this.cards[this.selections[1]].solved = true
             this.score ++
-            setTimeout(this.flipCardsBackOver, 1000)
+            //setTimeout(this.flipCardsBackOver, 1000)
         } else {
             this.drawWrongAnswer()
             this.guesses++    
