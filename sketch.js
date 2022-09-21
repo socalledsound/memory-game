@@ -19,27 +19,37 @@ function setup(){
 
 function draw(){
     background(0)
+    if(!game.over){
+        game.drawScoreboard()
+        game.cards.forEach((card) => {
+            card.render()
+            if(!card.back){
+                card.showImage()
+            }
+            if(card.wrong){
+                card.renderX()
+            }
+        })
+        game.checkGameOver()
+    }else{
+        game.drawGameOver()
+    }
 
-    game.cards.forEach((card) => {
-        card.render()
-        if(!card.back){
-            card.showImage()
-        }
-        if(card.wrong){
-            card.renderX()
-        }
-    })
 
-    fill(255)
-    textSize(50)
-    text(`score: ${game.score}`, 50, 50)
+
 
 }
 
 function mousePressed(){
-    game.cards.forEach(card => {
-        card.checkClick(mouseX, mouseY)
-    })
+    if(!game.over){
+        game.cards.forEach(card => {
+            card.checkClick(mouseX, mouseY)
+        })
+    }else{
+        game = new Game(imgs)
+        game.init() 
+    }
+
    
 }
 

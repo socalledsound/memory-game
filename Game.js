@@ -20,6 +20,8 @@ class Game {
         this.selections = []
         this.selectionCount = 0
         this.score = 0
+        this.guesses=0
+        this.over = false
     }
 
     init(){
@@ -55,8 +57,41 @@ class Game {
             this.score ++
             setTimeout(this.flipCardsBackOver, 1000)
         } else {
-            this.drawWrongAnswer()    
+            this.drawWrongAnswer()
+            this.guesses++    
         }
+    }
+
+    checkGameOver(){
+        if(this.guesses > 3){
+            this.over = true
+        }
+    }
+
+    drawGameOver(){
+        background(220,0,0)
+        textSize(90)
+        fill(0)
+        noStroke()
+        text('GAME', 150, 200)
+        text('OVER', 150, 300)
+        textSize(30)
+        text('click anywhere to try again', 150, 500)
+    }
+
+    drawScoreboard(){
+        fill(255)
+        noStroke()
+        textSize(50)
+        text(`score: ${this.score}`, 50, 50)
+        // text(`guesses: ${this.guesses}`, 450, 50)
+        if(this.guesses){
+            for(let i = 0; i < this.guesses; i++){   
+                fill(190,210,0)
+                ellipse(550 + i * 50, 25, 25)     
+        }
+        }
+
     }
 
     drawWrongAnswer(){
